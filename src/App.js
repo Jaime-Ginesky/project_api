@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
+import ParticlesBg from 'particles-bg';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
 
-const app = new Clarifai.App({
-  apiKey: 'eda19c663ceb4470a64ab07e61ab1cf4'
-})
 
 class App extends Component {
   constructor(){
@@ -23,7 +20,7 @@ class App extends Component {
 
   onSubmit = () => {
     console.log('click');
-    app.models.predict("eda19c663ceb4470a64ab07e61ab1cf4", "https://samples.clarifai.com/metro-north.jpg" )
+    App.models.predict("eda19c663ceb4470a64ab07e61ab1cf4", "https://samples.clarifai.com/metro-north.jpg" )
   }
   render() {
   return (
