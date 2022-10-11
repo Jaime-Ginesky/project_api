@@ -7,13 +7,19 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 
 
-class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-       input:'',
+const particlesOptions = {
+  particles: {
+    line_linked: {
+      shadow: {
+        enable: true,
+        color: "#3CA9D1",
+        blur: 5
+      }
     }
-  }
+  } 
+}
+class App extends Component {
+  
   onInputChange = (event) => {
     console.log(event);
   }
@@ -25,6 +31,7 @@ class App extends Component {
   render() {
   return (
     <div className="App">
+       <ParticlesBg type="circle" bg={true} />
       <Navigation />
       <Logo />
       <Rank />
