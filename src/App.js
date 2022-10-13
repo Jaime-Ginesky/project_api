@@ -6,6 +6,7 @@ import ParticlesBg from 'particles-bg';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 import './App.css';
 
 
@@ -28,6 +29,7 @@ class App extends Component {
     input: '',
     imageUrl:'',
     box: {},
+    route: 'signin'
    }
    }
 
@@ -85,20 +87,32 @@ class App extends Component {
     .then((result) => this.displayFaceBox(this.calculateFaceLocation(result)))
     .catch((error) => console.log("error", error));
   }
+
+  onRouteChange = (route) => {
+    this.setState({route: 'home'});
+  }
   render() {
   return (
     <div className="App">
        <ParticlesBg type="circle" bg={true} />
-      <Navigation />
-      <Signin />
-      <Logo />
-      <Rank />
-      <ImageLinkForm 
-      onInputChange={this.onInputChange} 
-      onButtonSubmit={this.onButtonSubmit}/>
-      <FaceRecognition box={this.state.box} imageUrl={this.state.input}/>  
-    </div>
+      <Navigation onRouteChange={this.onRouteChange}/>
+      {this.state.route === 'home' 
+      ? <div> 
+          <Logo />
+          <Rank />
+          <ImageLinkForm 
+             onInputChange={this.onInputChange} 
+             onButtonSubmit={this.onButtonSubmit}/>
+          <FaceRecognition box={this.state.box} imageUrl={this.state.input}/>  
+         </div>
+     : (
+      this.state.route === 'signin'
+        ? <Signin onRouteChange={this.onRouteChange}/>
+        : <Register onRouteChange={this.onRouteChange}/> 
+       )
+      }
+   </div>
   );
- }
-}
+    }
+  }
 export default App;
