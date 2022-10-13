@@ -5,6 +5,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ParticlesBg from 'particles-bg';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import Signin from './components/Signin/Signin';
 import './App.css';
 
 
@@ -89,6 +90,7 @@ class App extends Component {
     <div className="App">
        <ParticlesBg type="circle" bg={true} />
       <Navigation />
+      <Signin />
       <Logo />
       <Rank />
       <ImageLinkForm 
